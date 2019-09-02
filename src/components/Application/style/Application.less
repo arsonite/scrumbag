@@ -1,0 +1,28 @@
+@import '../../../style/global.less';
+
+#app {
+	height: 100%;
+	width: 100%;
+
+	background-color: #eee;
+
+	transition: @trans_250;
+
+	z-index: @zNeutral;
+
+	main {
+		padding: 5%;
+		margin: 0 auto;
+		height: 100%;
+		width: 70%;
+
+		border-right: 0.1rem solid #ddd;
+		border-left: 0.1rem solid #ddd;
+	}
+
+	main.expanded {
+		width: 100%;
+
+		border: none;
+	}
+}

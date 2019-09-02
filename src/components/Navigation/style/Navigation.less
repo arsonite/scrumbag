@@ -1,0 +1,23 @@
+@import '../../../style/global.less';
+
+nav {
+	position: fixed;
+	top: 0;
+
+	display: flex;
+	justify-content: space-around;
+	height: 3rem;
+	width: 100%;
+
+	background-color: @anthrazit;
+
+	transition: @trans_250;
+
+	z-index: @zHigh;
+}
+
+nav:hover {
+	height: 4rem;
+
+	background-color: @anthrazit_L;
+}
