@@ -1,29 +1,59 @@
 {
-	"shopping list": {
-		"home": {
-			"vegetables": { "Tomato": "Dressing" },
-			"meat": {},
-			"miscellonous": {},
-			"electronics": {},
-			"hygene": {},
-			"kids": {}
-		},
+	"projects": [
+		{
+			"id": "P#0000-0000-0001",
+			"name": "Lockkliye",
+			"info": "",
+			"members": [],
+			"labels": [
+				{
+					"id": "L#0000-0000-0001",
+					"title": "Bug",
+					"color": "#f00"
+				},
+				{
+					"id": "L#0000-0000-0002",
+					"title": "Frontend",
+					"color": "#31f921"
+				}
+			],
+			"lists": [
+				{
+					"name": "Backlog",
+					"tickets": [
+						{
+							"id": "T#0000-0000-0001",
+							"title": "Fix bugs",
+							"info": "There are some bugs in the frontend. Fix them!",
+							"labels": [
+								{ "title": "Bug", "color": "#f00" },
+								{ "title": "Frontend", "color": "#31f921" }
+							]
+						},
+						{
+							"id": "T#0000-0000-0002",
+							"title": "Implement feature",
+							"info": "",
+							"labels": [{ "title": "Frontend", "color": "#31f921" }]
+						}
+					]
+				},
 
-		"work": {
-			"office suppies": {
-				"pens": {}
-			}
+				{
+					"name": "In Development",
+					"tickets": [
+						{
+							"id": "T#0000-0000-0003",
+							"title": "Fix bugs",
+							"info": "There are some bugs in the backend. Fix them!",
+							"labels": [
+								{ "title": "Bug", "color": "#f00" },
+								{ "title": "Backend", "color": "#00f" }
+							]
+						}
+					]
+				}
+			]
 		}
-	},
-
-	"todo": {
-		"programming": {},
-		"school": {}
-	},
-
-	"notes": {
-		"schedules": {
-			"family": {}
-		}
-	}
+	]
 }
