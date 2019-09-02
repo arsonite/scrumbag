@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+
+import Application from './components/Application/Application';
 
 import * as serviceWorker from './services/serviceWorker';
 
@@ -13,8 +16,11 @@ if (!DEBUG) {
 }
 
 ReactDOM.render(
-	<React.Fragment></React.Fragment>,
+	<BrowserRouter>
+		<Application></Application>
+	</BrowserRouter>,
 	document.getElementById('root')
 );
 
-serviceWorker.unregister();
+//serviceWorker.register(); // De-comment this to allow application to run offline
+serviceWorker.unregister(); // Unregistering serviceWorker in order to prevent the app from running offline
