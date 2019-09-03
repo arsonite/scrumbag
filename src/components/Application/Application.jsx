@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import Navigation from '../Navigation/Navigation';
 import Home from '../Home/Home';
@@ -12,35 +12,63 @@ import { projects } from './../../test_entries.json';
 
 import './style/Application.css';
 
-const items = ['Home', 'Profile', 'Settings', 'Workspace'];
+const items = [Home, Workspace, Settings, Profile];
 
 class Application extends Component {
 	state = {
 		sharedData: {
-			expanded: true
-		},
+			expanded: true,
 
-		data: {}
+			data: {}
+		}
 	};
 
 	componentWillMount = async () => {
 		let sharedData = this.state.sharedData;
-		let data = { projects };
-		this.setState({ sharedData: sharedData, data: data });
+		sharedData.data = { projects };
+		this.setState({ sharedData: sharedData });
+	};
+
+	/**
+	 *
+	 */
+	dynamicImport = async modules => {
+		/* Using experimental dynamic imports to parse needed modules from response-body */
+		modules.split(',').forEach(async (m, i) => {
+			let component = m.trim();
+			let sharedData = this.state.sharedData;
+			/* Dynamically import .jsx module from /modules/ folder */
+			let module = await import(`./${component}/${component}.jsx`);
+			/* Ensures the correct index of modules in array */
+			sharedData.modules[i] = module.default;
+			this.setState({ sharedData: sharedData });
+		});
 	};
 
 	render() {
-		console.log(this.state.data.projects[0]);
-
 		return (
 			<div id='app'>
 				<Navigation items={items}></Navigation>
 
 				<main className={this.state.sharedData.expanded ? 'expanded' : ''}>
-					<Workspace
-						sharedData={this.state.sharedData}
-						data={this.state.data.projects[0].lists}
-					></Workspace>
+					<Switch>
+						{items.map((Component, i) => {
+							return (
+								<Route
+									key={Component.name}
+									path={`/${Component.name.toLowerCase()}`}
+									render={props => (
+										<Component
+											{...props}
+											index={i}
+											popIndex={this.popIndex}
+											sharedData={this.state.sharedData}
+										/>
+									)}
+								/>
+							);
+						})}
+					</Switch>
 				</main>
 			</div>
 		);
@@ -48,15 +76,3 @@ class Application extends Component {
 }
 
 export default Application;
-
-/*
-<Switch>
-	<Home></Home>
-
-	<Profile></Profile>
-
-	<Settings></Settings>
-
-	<Workspace></Workspace>
-</Switch>
-*/

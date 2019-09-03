@@ -20,7 +20,7 @@ class Workspace extends Component {
 	};
 
 	componentWillMount = () => {
-		this.setState({ data: this.props.data });
+		this.setState({ data: this.props.sharedData.data.projects[0].lists });
 		this._isMounted = true;
 	};
 
@@ -38,7 +38,7 @@ class Workspace extends Component {
 
 				<div id='content'>
 					{this.state.data.map(list => {
-						return <List tickets={list.tickets}></List>;
+						return <List name={list.name} tickets={list.tickets}></List>;
 					})}
 				</div>
 			</div>

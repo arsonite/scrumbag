@@ -4,9 +4,9 @@
 @mobile: 500;
 @query: ~'only screen and (max-height: @{mobile}px), only screen and (max-width: @{mobile}px)';
 /* Responsive media query for portrait mode */
-@queryPortrait: ~'only screen and (max-width: @{mobile}px)';
+@query_P: ~'only screen and (max-width: @{mobile}px)';
 /* Responsive media query for landscape mode */
-@queryLandscape: ~'only screen and (max-height: @{mobile}px)';
+@query_L: ~'only screen and (max-height: @{mobile}px)';
 
 /* Color-codes */
 @anthrazit: #333;
@@ -19,8 +19,11 @@
 @shade: 0px 2px 2px 0px #bbb;
 
 /* Transition-data */
+@trans_50: 50ms all;
+@trans_100: 100ms all;
 @trans_250: 250ms all;
 @trans_500: 500ms all;
+@trans_750: 750ms all;
 @trans_1000: 1s all;
 
 /* Z-layer positioning */

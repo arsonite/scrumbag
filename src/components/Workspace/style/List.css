@@ -1,1 +1,1 @@
-.list{display:flex;flex-direction:column;padding:1%;margin-right:2%;background-color:#dfdfdf;border-radius:.35rem;box-shadow:0 3px 3px 0 #ccc}
+.list{position:relative;display:flex;flex-direction:column;padding:0 .5rem;margin-right:2rem;width:21rem;background-color:#dfdfdf;border-radius:.35rem;box-shadow:0 .3rem .3rem 0 #ccc}.list .name{padding:3% 0;color:#555;font-weight:bold}

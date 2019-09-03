@@ -1,7 +1,3 @@
-/* Debug flag, enables certain features for development
- */
-const DEBUG = false;
-
 /* Relative public ressource-paths. */
 const src = {
 	img: '/img',
@@ -14,6 +10,10 @@ const breakpoints = {
 	mobile: 500,
 	tablet: 750
 };
+
+/* Debug flag, enables certain features for development
+ */
+export const DEBUG = false;
 
 /* The barebone navigation of the web-application. */
 export const nav = [];

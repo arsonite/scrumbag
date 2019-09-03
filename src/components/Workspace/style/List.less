@@ -1,12 +1,26 @@
+@import '../../../style/global.less';
+
 .list {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 
-	padding: 1%;
-	margin-right: 2%;
+	padding: 0 0.5rem;
+	margin-right: 2rem;
+	width: 21rem;
 
 	background-color: #dfdfdf;
 	border-radius: 0.35rem;
 	/* offset-x | offset-y | blur-radius | spread-radius | color */
-	box-shadow: 0px 3px 3px 0px #ccc;
+	box-shadow: 0 0.3rem 0.3rem 0 #ccc;
+
+	.name {
+		padding: 3% 0;
+
+		color: #555;
+		font-weight: bold;
+	}
+
+	.tickets {
+	}
 }

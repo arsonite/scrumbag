@@ -4,13 +4,17 @@
 	display: flex;
 	flex-direction: column;
 
-	padding: 2%;
-	margin-bottom: 5%;
+	padding: 0.5rem;
+	margin-bottom: 1rem;
+	height: fit-content;
+	width: 20rem;
 
 	background-color: #fff;
 	border-radius: 0.35rem;
 	/* offset-x | offset-y | blur-radius | spread-radius | color */
 	box-shadow: 0px 2px 2px 0px #ccc;
+
+	transition: 50ms transform;
 
 	.labels {
 		display: flex;
@@ -40,5 +44,19 @@
 }
 
 .ticket:hover {
+	cursor: pointer;
+
+	background-color: #f0f0f0;
+}
+
+.ticket.dragged:hover {
 	cursor: grab;
+
+	position: absolute;
+
+	background-color: #fafafa;
+
+	transform: rotateZ(-5deg);
+
+	z-index: @zSuper;
 }

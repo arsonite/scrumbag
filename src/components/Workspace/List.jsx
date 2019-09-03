@@ -12,15 +12,19 @@ class List extends Component {
 	render() {
 		return (
 			<div className='list'>
-				{this.props.tickets.map(ticket => {
-					return (
-						<Ticket
-							title={ticket.title}
-							info={ticket.info}
-							labels={ticket.labels}
-						></Ticket>
-					);
-				})}
+				<span className='name'>{this.props.name}</span>
+
+				<div className='tickets'>
+					{this.props.tickets.map(ticket => {
+						return (
+							<Ticket
+								title={ticket.title}
+								info={ticket.info}
+								labels={ticket.labels}
+							></Ticket>
+						);
+					})}
+				</div>
 			</div>
 		);
 	}
