@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
 import List from './List';
-import Ticket from './Ticket';
 
 import './style/Workspace.css';
 
@@ -11,23 +10,27 @@ class Workspace extends Component {
 	state = {
 		dirty: false,
 
+		lists: {},
+
 		views: {
 			available: ['Bars', 'List', 'Tiles'],
 			current: 1
 		},
 
-		data: {}
+		draggedTicket: [-1, -1]
 	};
 
-	componentWillMount = () => {
-		this.setState({ data: this.props.sharedData.data.projects[0].lists });
+	componentWillMount = async () => {
+		this.setState({ lists: this.props.sharedData.data.projects[0].lists });
 		this._isMounted = true;
 	};
 
 	/**
 	 *
 	 */
-	assemble = data => {};
+	popIndex = (listIndex, index) => {
+		console.log(listIndex, index);
+	};
 
 	render() {
 		if (!this._isMounted) return <p>No data available.</p>;
@@ -37,8 +40,16 @@ class Workspace extends Component {
 				<div id='ticketView'></div>
 
 				<div id='content'>
-					{this.state.data.map(list => {
-						return <List name={list.name} tickets={list.tickets}></List>;
+					{this.state.lists.map((list, i) => {
+						return (
+							<List
+								key={i}
+								listIndex={i}
+								name={list.name}
+								tickets={list.tickets}
+								popIndex={this.popIndex}
+							></List>
+						);
 					})}
 				</div>
 			</div>

@@ -27,20 +27,13 @@ class Navigation extends Component {
 			<nav>
 				{items.map((item, i) => {
 					return (
-						<React.Fragment key={i}>
-							<NavigationButton
-								item={item}
-								index={i}
-								isActive={this.props.currentIndex === i}
-								popIndex={this.props.popIndex}
-							/>
-							{/* */}
-							{this.props.subNav !== undefined && i < items.length - 1 ? (
-								<hr />
-							) : (
-								''
-							)}
-						</React.Fragment>
+						<NavigationButton
+							key={i}
+							index={i}
+							item={item}
+							isActive={this.props.currentIndex === i}
+							popIndex={this.props.popIndex}
+						/>
 					);
 				})}
 			</nav>

@@ -1,1 +1,1 @@
-.list{position:relative;display:flex;flex-direction:column;padding:0 .5rem;margin-right:2rem;width:21rem;background-color:#dfdfdf;border-radius:.35rem;box-shadow:0 .3rem .3rem 0 #ccc}.list .name{padding:3% 0;color:#555;font-weight:bold}
+.list{position:relative;display:flex;flex-direction:column;padding:0 .5rem;margin-right:2rem;width:21rem;background-color:#dfdfdf;border-radius:.35rem;box-shadow:0 .3rem .3rem 0 #ccc}.list .name{padding:3% 0;color:#555;font-weight:bold}.list .tickets{position:relative;height:100%;width:100%}

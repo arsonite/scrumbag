@@ -1,1 +1,1 @@
-#app{height:100%;width:100%;background-color:#eee;transition:250ms all;z-index:0}#app main{padding:5%;margin:0 auto;height:100%;width:70%;border-right:.1rem solid #ddd;border-left:.1rem solid #ddd}#app main.expanded{width:100%;border:none}
+#app{height:100%;width:100%;background-color:#eee;transition:250ms all;z-index:0}#app main{padding:5%;margin:0 auto;height:100%;width:70%;border-right:.1rem solid #ccc;border-left:.1rem solid #ccc}#app main.expanded{width:100%;border:none}

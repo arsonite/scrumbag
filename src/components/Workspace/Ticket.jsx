@@ -19,45 +19,9 @@ class Ticket extends Component {
 
 	constructor() {
 		super();
+
 		this.ref = React.createRef();
 	}
-
-	componentDidUpdate = (props, state) => {
-		if (this.state.dragged && !state.dragged) {
-			document.addEventListener('mousemove', this.onMouseMove);
-			document.addEventListener('mouseup', this.onMouseUp);
-		} else if (!this.state.dragged && state.dragged) {
-			document.removeEventListener('mousemove', this.onMouseMove);
-			document.removeEventListener('mouseup', this.onMouseUp);
-		}
-	};
-
-	onMouseUp = e => {
-		e.preventDefault();
-		e.stopPropagation();
-
-		this.setState({ dragged: false, pos: { x: 0, y: 0 } });
-	};
-
-	onMouseMove = e => {
-		e.preventDefault();
-		e.stopPropagation();
-
-		if (!this.state.dragged) return;
-
-		this.setState({
-			dragged: true,
-			pos: {
-				x: e.pageX - this.state.rel.x,
-				y: e.pageY - this.state.rel.y
-			}
-		});
-	};
-
-	/**
-	 *
-	 */
-	drag = () => {};
 
 	render() {
 		return (
@@ -69,6 +33,28 @@ class Ticket extends Component {
 				style={{
 					top: this.state.pos.y + 'px',
 					left: this.state.pos.x + 'px'
+				}}
+				onMouseUp={e => {
+					e.preventDefault();
+					e.stopPropagation();
+
+					this.setState({ dragged: false, pos: { x: 0, y: 0 } }, () => {
+						this.props.popIndex(-1, -1);
+					});
+				}}
+				onMouseMove={e => {
+					e.preventDefault();
+					e.stopPropagation();
+
+					if (!this.state.dragged) return;
+
+					this.setState({
+						dragged: true,
+						pos: {
+							x: e.pageX - this.state.rel.x,
+							y: e.pageY - this.state.rel.y
+						}
+					});
 				}}
 				onMouseDown={e => {
 					e.preventDefault();
@@ -82,13 +68,24 @@ class Ticket extends Component {
 						left: parseInt(computedStyle.left)
 					};
 
-					this.setState({
-						dragged: true,
-						rel: {
-							x: e.pageX - pos.left,
-							y: e.pageY - pos.top
+					this.setState(
+						{
+							dragged: true,
+							rel: {
+								x: e.pageX - pos.left,
+								y: e.pageY - pos.top
+							}
+						},
+						() => {
+							this.props.popIndex(this.props.listIndex, this.props.index);
 						}
-					});
+					);
+				}}
+				onMouseLeave={e => {
+					e.preventDefault();
+					e.stopPropagation();
+
+					this.setState({ dragged: false, pos: { x: 0, y: 0 } });
 				}}
 			>
 				<span className='labels'>

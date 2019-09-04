@@ -5,9 +5,13 @@ import Ticket from './Ticket';
 import './style/List.css';
 
 class List extends Component {
-	state = {};
+	state = {
+		tickets: []
+	};
 
-	componentWillMount = () => {};
+	componentWillMount = () => {
+		this.setState({ tickets: this.props.tickets });
+	};
 
 	render() {
 		return (
@@ -15,12 +19,17 @@ class List extends Component {
 				<span className='name'>{this.props.name}</span>
 
 				<div className='tickets'>
-					{this.props.tickets.map(ticket => {
+					{this.state.tickets.map((ticket, i) => {
 						return (
 							<Ticket
+								key={i}
+								index={i}
+								listIndex={this.props.listIndex}
+								id={ticket.id}
 								title={ticket.title}
 								info={ticket.info}
 								labels={ticket.labels}
+								popIndex={this.props.popIndex}
 							></Ticket>
 						);
 					})}

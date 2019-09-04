@@ -17,7 +17,7 @@ const items = [Home, Workspace, Settings, Profile];
 class Application extends Component {
 	state = {
 		sharedData: {
-			expanded: true,
+			expanded: false,
 
 			data: {}
 		}
@@ -48,7 +48,11 @@ class Application extends Component {
 	render() {
 		return (
 			<div id='app'>
-				<Navigation items={items}></Navigation>
+				<Navigation
+					items={items.map(item => {
+						return item.name;
+					})}
+				></Navigation>
 
 				<main className={this.state.sharedData.expanded ? 'expanded' : ''}>
 					<Switch>

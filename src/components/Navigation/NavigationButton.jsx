@@ -8,6 +8,8 @@ import { getPath } from 'config.js';
 import './style/NavigationButton.css';
 
 function NavigationButton(props) {
+	const item = props.item.toLowerCase();
+
 	return (
 		<span
 			/* If the subnavigation is active (non-collapsed), add className */
@@ -16,18 +18,12 @@ function NavigationButton(props) {
 			<Link
 				className='link'
 				/* Links to the name of the tab */
-				to={`/${props.nav}`}
+				to={`/${item}`}
 			>
 				<React.Fragment>
-					<SVGWrapper src={getPath('nav')} icon={props.tab} />
+					<SVGWrapper src={getPath('nav')} icon={item} />
 
-					<p>{props.tab}</p>
-
-					{props.hasSubNav ? (
-						<SVGWrapper src={getPath('icon')} icon={'arrow'} />
-					) : (
-						''
-					)}
+					<p>{props.item}</p>
 				</React.Fragment>
 			</Link>
 		</span>
