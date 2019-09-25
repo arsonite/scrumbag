@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import List from './List';
+import Ticket from './Ticket';
 
 import './style/Workspace.css';
 
@@ -8,16 +9,33 @@ class Workspace extends Component {
 	_isMounted = false;
 
 	state = {
-		dirty: false,
+		dirty: false, //
 
-		lists: {},
-
+		/* */
 		views: {
 			available: ['Bars', 'List', 'Tiles'],
 			current: 1
 		},
 
-		draggedTicket: [-1, -1]
+		lists: {}, //
+
+		/* */
+		dragged: {
+			bool: false, //
+			ticket: {}, //
+			/* */
+			dimensions: {
+				x: 0,
+				y: 0,
+				height: 0,
+				width: 0
+			},
+			/* */
+			index: {
+				list: 0,
+				ticket: 0
+			}
+		}
 	};
 
 	componentWillMount = async () => {
@@ -28,15 +46,35 @@ class Workspace extends Component {
 	/**
 	 *
 	 */
-	popIndex = (listIndex, index) => {
-		console.log(listIndex, index);
+	drag = ({ config }) => {};
+
+	/**
+	 *
+	 */
+	popData = ({ config }) => {
+		let dragged = this.state.dragged;
+		this.setState({ dragged: config });
 	};
 
 	render() {
 		if (!this._isMounted) return <p>No data available.</p>;
 
+		let ticket = this.state.dragged.ticket;
+
 		return (
 			<div id='workspace'>
+				{this.state.dragged ? (
+					<Ticket
+						key={'final'}
+						title={ticket.title}
+						info={ticket.info}
+						labels={ticket.labels}
+						popData={this.props.popData}
+					></Ticket>
+				) : (
+					''
+				)}
+
 				<div id='ticketView'></div>
 
 				<div id='content'>
@@ -47,7 +85,7 @@ class Workspace extends Component {
 								listIndex={i}
 								name={list.name}
 								tickets={list.tickets}
-								popIndex={this.popIndex}
+								popData={this.popData}
 							></List>
 						);
 					})}

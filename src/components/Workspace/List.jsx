@@ -23,13 +23,12 @@ class List extends Component {
 						return (
 							<Ticket
 								key={i}
-								index={i}
 								listIndex={this.props.listIndex}
-								id={ticket.id}
+								index={i}
 								title={ticket.title}
 								info={ticket.info}
 								labels={ticket.labels}
-								popIndex={this.props.popIndex}
+								popData={this.props.popData}
 							></Ticket>
 						);
 					})}

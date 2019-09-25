@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navigation from '../Navigation/Navigation';
-import Home from '../Home/Home';
-import Workspace from '../Workspace/Workspace';
-import Settings from '../Settings/Settings';
-import Profile from '../Profile/Profile';
+import Navigation from 'components/Navigation/Navigation';
+import Home from 'components/Home/Home';
+import Workspace from 'components/Workspace/Workspace';
+import Settings from 'components/Settings/Settings';
+import Profile from 'components/Profile/Profile';
 
 // TODO: Temporary
-import { projects } from './../../test_entries.json';
+import { projects } from 'test_entries.json';
 
 import './style/Application.css';
 
